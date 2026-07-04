@@ -54,8 +54,8 @@ body {
 }
 
 .dark .bg-white {
-  background: #1e293b !important;
-  color: white !important;
+  background: #1e293b;
+  color: white;
 }
 
 .dark .bg-yellow-100 {
@@ -98,6 +98,6 @@ nav h1 {
 .dark nav h1 {
   color: white !important;
 }
-html {
+/*html {
   scroll-behavior: smooth;
-}
+} */

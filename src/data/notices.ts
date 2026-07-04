@@ -1,26 +1,25 @@
 export const notices = [
   {
-    slug: "ssc-cgl-2026-notification",
-    title: "SSC CGL 2026 Notification",
-    category: "job",
-    dates: {
-      start: "01 July 2026",
-      last: "31 July 2026",
-      exam: "Coming Soon",
-    },
-    eligibility: "Graduate",
-age: "18-32 Years",
+  slug: "ssc-cgl-2026-notification",
+  title: "SSC CGL 2026 Notification",
+  category: "job",
 
-fee: {
-  general: "₹100",
-  scst: "₹0",
-},
+  organization: "Staff Selection Commission",
+  qualification: "Graduate",
+  ageLimit: "18-32 Years",
+  applicationFee: "₹100",
+  selectionProcess: "Tier 1, Tier 2, Document Verification",
+  officialWebsite: "https://ssc.gov.in",
+  
+  description:
+  "Staff Selection Commission (SSC) has released the Combined Graduate Level Examination 2026 notification. Eligible candidates can apply online before the last date.",
 
-applyLink: "#",
-notificationLink: "#",
-officialWebsite: "https://ssc.gov.in",
-syllabusLink: "#",
+  dates: {
+    start: "01 July 2026",
+    last: "31 July 2026",
+    exam: "Coming Soon",
   },
+},
 
   {
     slug: "rrb-ntpc-recruitment-2026",

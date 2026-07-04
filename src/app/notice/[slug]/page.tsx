@@ -22,6 +22,9 @@ export default async function NoticePage({
         <h1 className="text-3xl font-bold text-center mb-8">
           {notice.title}
         </h1>
+        <p className="text-gray-600 text-center mb-8">
+  {notice.description}
+</p>
 
         {/* Eligibility Details */}
 <div className="border rounded-xl p-5 mb-6">
@@ -79,8 +82,71 @@ export default async function NoticePage({
           </div>
 
         </div>
+        <div className="overflow-x-auto mb-8">
+  <table className="w-full border">
+
+    <thead>
+      <tr className="bg-slate-200">
+        <th className="p-3 border">Event</th>
+        <th className="p-3 border">Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td className="p-3 border">Application Start</td>
+        <td className="p-3 border">{notice.dates.start}</td>
+      </tr>
+
+      <tr>
+        <td className="p-3 border">Last Date</td>
+        <td className="p-3 border">{notice.dates.last}</td>
+      </tr>
+
+      <tr>
+        <td className="p-3 border">Exam Date</td>
+        <td className="p-3 border">{notice.dates.exam}</td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
 
         {/* Important Information */}
+        <div className="overflow-x-auto mb-6">
+  <table className="w-full border border-gray-300">
+
+    <tbody>
+
+      <tr className="border-b">
+        <td className="p-3 font-bold">Organization</td>
+        <td className="p-3">{notice.organization}</td>
+      </tr>
+
+      <tr className="border-b">
+        <td className="p-3 font-bold">Qualification</td>
+        <td className="p-3">{notice.qualification}</td>
+      </tr>
+
+      <tr className="border-b">
+        <td className="p-3 font-bold">Age Limit</td>
+        <td className="p-3">{notice.ageLimit}</td>
+      </tr>
+
+      <tr className="border-b">
+        <td className="p-3 font-bold">Application Fee</td>
+        <td className="p-3">{notice.applicationFee}</td>
+      </tr>
+
+      <tr className="border-b">
+        <td className="p-3 font-bold">Selection Process</td>
+        <td className="p-3">{notice.selectionProcess}</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+</div>
        <table className="w-full border border-collapse">
   <tbody>
     <tr className="border">
@@ -144,6 +210,7 @@ export default async function NoticePage({
            <a
   href={notice.officialWebsite || "#"}
   target="_blank"
+  rel="noopener noreferrer"
   className="bg-purple-600 text-white text-center py-3 rounded-lg font-bold"
 >
   Official Website
