@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Exam Notice - Latest Jobs, Admit Cards & Results",
+  title: "Exam Notice",
   description:
-    "Get latest Government Jobs, Admit Cards, Results, Answer Keys, Syllabus and Admission Updates.",
+    "Latest Government Jobs, Admit Cards, Results, Answer Keys, Syllabus and Admission Updates",
 };
 
 export default function RootLayout({

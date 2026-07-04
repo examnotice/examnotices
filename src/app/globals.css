@@ -98,3 +98,6 @@ nav h1 {
 .dark nav h1 {
   color: white !important;
 }
+html {
+  scroll-behavior: smooth;
+}

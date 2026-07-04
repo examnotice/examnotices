@@ -29,27 +29,27 @@ const admissions = notices.filter(
       <div className="bg-white shadow">
   <div className="max-w-7xl mx-auto px-5 py-3 flex flex-wrap gap-4 justify-center">
 
-    <a href="#" className="font-medium hover:text-blue-600">
+    <a href="#jobs" className="font-medium hover:text-blue-600">
       Jobs
     </a>
 
-    <a href="#" className="font-medium hover:text-blue-600">
+    <a href="#admit" className="font-medium hover:text-blue-600">
       Admit Card
     </a>
 
-    <a href="#" className="font-medium hover:text-blue-600">
+    <a href="results" className="font-medium hover:text-blue-600">
       Results
     </a>
 
-    <a href="#" className="font-medium hover:text-blue-600">
+    <a href="#answerkey" className="font-medium hover:text-blue-600">
       Answer Key
     </a>
 
-    <a href="#" className="font-medium hover:text-blue-600">
+    <a href="#syllabus" className="font-medium hover:text-blue-600">
       Syllabus
     </a>
 
-    <a href="#" className="font-medium hover:text-blue-600">
+    <a href="#admission" className="font-medium hover:text-blue-600">
       Admission
     </a>
 
@@ -159,7 +159,8 @@ const admissions = notices.filter(
       <section className="max-w-7xl mx-auto px-5 pb-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         {/* Jobs */}
-        <div className="bg-white rounded-xl shadow-lg p-5">
+        <div id="jobs"
+        className="bg-white rounded-xl shadow-lg p-5">
           <h2 className="text-xl font-bold text-blue-700 mb-4 border-b pb-2">
             Latest Jobs
           </h2>
@@ -186,7 +187,8 @@ const admissions = notices.filter(
         </div>
 
         {/* Admit Cards */}
-        <div className="bg-white rounded-xl shadow-lg p-5">
+        <div id="admit"
+        className="bg-white rounded-xl shadow-lg p-5">
           <h2 className="text-xl font-bold text-green-700 mb-4 border-b pb-2">
             Admit Cards
           </h2>
@@ -209,7 +211,8 @@ const admissions = notices.filter(
         </div>
 
         {/* Results */}
-        <div className="bg-white rounded-xl shadow-lg p-5">
+        <div id="results"
+        className="bg-white rounded-xl shadow-lg p-5">
           <h2 className="text-xl font-bold text-red-700 mb-4 border-b pb-2">
             Results
           </h2>
@@ -231,7 +234,8 @@ const admissions = notices.filter(
 ))}
         </div>
         {/* Answer Keys */}
-<div className="bg-white rounded-xl shadow-lg p-5">
+        <div id="answerkey"
+className="bg-white rounded-xl shadow-lg p-5">
   <h2 className="text-xl font-bold text-purple-700 mb-4 border-b pb-2">
     Answer Keys
   </h2>
@@ -254,7 +258,8 @@ const admissions = notices.filter(
 </div>
 
 {/* Syllabus */}
-<div className="bg-white rounded-xl shadow-lg p-5">
+<div id="syllbus"
+className="bg-white rounded-xl shadow-lg p-5">
   <h2 className="text-xl font-bold text-orange-700 mb-4 border-b pb-2">
     Syllabus
   </h2>
@@ -277,7 +282,8 @@ const admissions = notices.filter(
 </div>
 
 {/* Admissions */}
-<div className="bg-white rounded-xl shadow-lg p-5">
+<div id="admissions"
+className="bg-white rounded-xl shadow-lg p-5">
   <h2 className="text-xl font-bold text-cyan-700 mb-4 border-b pb-2">
     Admissions
   </h2>
@@ -304,10 +310,27 @@ const admissions = notices.filter(
       {/* Footer */}
       <ScrollTop />
 
-<footer className="bg-slate-900 text-white text-center py-6">
-  © 2026 Exam Notice. All Rights Reserved.
-</footer>
+<footer className="bg-slate-900 text-white py-8">
+  <div className="text-center">
 
+    <div className="flex justify-center gap-6 mb-4">
+
+      <a href="#">About Us</a>
+
+      <a href="#">Contact Us</a>
+
+      <a href="#">Privacy Policy</a>
+
+      <a href="#">Disclaimer</a>
+
+    </div>
+
+    <p>
+      © 2026 Exam Notice. All Rights Reserved.
+    </p>
+
+  </div>
+</footer>
 </main>
   );
 }
