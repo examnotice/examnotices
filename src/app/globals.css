@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f1f5f9;
+  font-family: Arial, Helvetica, sans-serif;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-300px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 12s ease-in-out infinite;
+}
+@keyframes leftright {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-350px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.leftright {
+  animation: leftright 8s ease-in-out infinite;
+}
+.dark {
+  background: #0f172a;
+}
+
+.dark #mainPage {
+  background: #0f172a !important;
+  color: white !important;
+}
+
+.dark .bg-white {
+  background: #1e293b !important;
+  color: white !important;
+}
+
+.dark .bg-yellow-100 {
+  background: #334155 !important;
+}
+
+.dark .text-gray-500 {
+  color: #cbd5e1 !important;
+}
+
+.dark .border-b {
+  border-color: #475569 !important;
+}
+.dark nav {
+  background: #111827 !important;
+}
+
+.dark nav a,
+.dark nav button {
+  background: #374151 !important;
+  color: white !important;
+}
+.dark-navbar a,
+.dark-navbar button {
+  background: #475569 !important;
+}
+.dark nav {
+  background: #111827 !important;
+}
+
+nav {
+  background: white !important;
+  color: black !important;
+}
+
+nav h1 {
+  color: black !important;
+}
+
+.dark nav h1 {
+  color: white !important;
+}
