@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { notices } from "../../../data/notices";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export default async function NoticePage({
   params,
@@ -8,11 +13,15 @@ export default async function NoticePage({
 }) {
   const { slug } = await params;
 
-  const notice = notices.find((item) => item.slug === slug);
+  const { data: notice, error } = await supabase
+  .from("notices")
+  .select("*")
+  .eq("slug", slug)
+  .single();
 
-  if (!notice) {
-    return <h1>Notice Not Found</h1>;
-  }
+if (error || !notice) {
+  return <h1>Notice Not Found</h1>;
+}
 
   return (
     <main className="min-h-screen bg-slate-100 p-5">
@@ -63,21 +72,21 @@ export default async function NoticePage({
           <div className="bg-green-600 text-white p-5 rounded-xl text-center">
             <p className="text-sm">Application Start</p>
             <p className="font-bold mt-2">
-              {notice.dates.start}
+              {notice.startDate}
             </p>
           </div>
 
           <div className="bg-red-600 text-white p-5 rounded-xl text-center">
             <p className="text-sm">Last Date</p>
             <p className="font-bold mt-2">
-              {notice.dates.last}
+              {notice.lastDate}
             </p>
           </div>
 
           <div className="bg-blue-600 text-white p-5 rounded-xl text-center">
             <p className="text-sm">Exam Date</p>
             <p className="font-bold mt-2">
-              {notice.dates.exam}
+              {notice.examDate}
             </p>
           </div>
 
@@ -95,17 +104,17 @@ export default async function NoticePage({
     <tbody>
       <tr>
         <td className="p-3 border">Application Start</td>
-        <td className="p-3 border">{notice.dates.start}</td>
+        <td className="p-3 border">{notice.startDate}</td>
       </tr>
 
       <tr>
         <td className="p-3 border">Last Date</td>
-        <td className="p-3 border">{notice.dates.last}</td>
+        <td className="p-3 border">{notice.lastDate}</td>
       </tr>
 
       <tr>
         <td className="p-3 border">Exam Date</td>
-        <td className="p-3 border">{notice.dates.exam}</td>
+        <td className="p-3 border">{notice.examDate}</td>
       </tr>
     </tbody>
 
@@ -156,17 +165,17 @@ export default async function NoticePage({
 
     <tr className="border">
       <td className="p-3 font-bold bg-slate-100">Application Start</td>
-      <td className="p-3">{notice.dates.start}</td>
+      <td className="p-3">{notice.startDate}</td>
     </tr>
 
     <tr className="border">
       <td className="p-3 font-bold bg-slate-100">Last Date</td>
-      <td className="p-3">{notice.dates.last}</td>
+      <td className="p-3">{notice.lastDate}</td>
     </tr>
 
     <tr className="border">
       <td className="p-3 font-bold bg-slate-100">Exam Date</td>
-      <td className="p-3">{notice.dates.exam}</td>
+      <td className="p-3">{notice.examDate}</td>
     </tr>
 
     <tr className="border">

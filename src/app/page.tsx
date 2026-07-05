@@ -2,20 +2,52 @@
 import Link from "next/link";
 import { notices } from "../data/notices";
 import ScrollTop from "./components/ScrollTop";
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabase";
+
 
 export default function Home() {
-  const jobs = notices.filter((item) => item.category === "job");
-  const admitCards = notices.filter((item) => item.category === "admit");
-  const results = notices.filter((item) => item.category === "result");
-  const answerKeys = notices.filter(
+
+  const [dbNotices, setDbNotices] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function loadNotices() {
+      const { data, error } = await supabase
+        .from("notices")
+        .select("*");
+
+      console.log("DATA:", data);
+      console.log("ERROR:", error);
+
+      if (data) {
+        setDbNotices(data);
+      }
+    }
+
+    loadNotices();
+  }, []);
+
+  const jobs = dbNotices.filter(
+  (item) => item.category === "job"
+);
+
+const admitCards = dbNotices.filter(
+  (item) => item.category === "admit"
+);
+
+const results = dbNotices.filter(
+  (item) => item.category === "result"
+);
+
+const answerKeys = dbNotices.filter(
   (item) => item.category === "answerkey"
 );
 
-const syllabus = notices.filter(
+const syllabus = dbNotices.filter(
   (item) => item.category === "syllabus"
 );
 
-const admissions = notices.filter(
+const admissions = dbNotices.filter(
   (item) => item.category === "admission"
 );
 
@@ -97,6 +129,7 @@ const admissions = notices.filter(
       </nav>
 
       {/* Hero */}
+      
       <section className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-16">
         <div className="max-w-6xl mx-auto px-5 text-center">
 
@@ -104,6 +137,7 @@ const admissions = notices.filter(
             Latest Government Jobs,
             Admit Cards & Results
           </h2>
+
 
           <p className="text-lg opacity-90 mb-6">
             Fast Updates For SSC, Railway, UPSC, JSSC & More
@@ -117,6 +151,9 @@ const admissions = notices.filter(
 
         </div>
       </section>
+      <p className="text-center py-4">
+  Total DB Notices: {dbNotices.length}
+</p>
 
       {/* Moving Cards */}
 <div className="overflow-hidden py-6 bg-yellow-100">
@@ -180,7 +217,7 @@ const admissions = notices.filter(
     </div>
 
     <p className="text-sm text-gray-500 mt-1">
-      Last Date: {job.dates.last}
+      Last Date: {job.lastDate}
     </p>
   </Link>
 ))}
@@ -311,13 +348,13 @@ className="bg-white rounded-xl shadow-lg p-5">
       <ScrollTop />
 
 <footer className="bg-slate-900 text-white py-8">
-  <div className="text-center">
+  <div className="max-w-6xl mx-auto text-center">
 
-    <div className="flex justify-center gap-6 mb-4">
+    <div className="flex flex-wrap justify-center gap-6 mb-4">
 
-      <a href="#">About Us</a>
+      <a href="/about">About Us</a>
 
-      <a href="#">Contact Us</a>
+      <a href="/contact">Contact Us</a>
 
       <a href="#">Privacy Policy</a>
 
