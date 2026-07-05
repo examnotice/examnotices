@@ -10,9 +10,9 @@ const supabase = createClient(
 export default async function NoticePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
 
   const { data: notice, error } = await supabase
   .from("notices")
