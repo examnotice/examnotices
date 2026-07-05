@@ -89,7 +89,88 @@ export default function Dashboard() {
 
       <div className="bg-white p-5 rounded-xl shadow max-w-xl">
         <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" className="w-full border p-2 mb-2" />
+<select
+  value={category}
+  onChange={(e) => setCategory(e.target.value)}
+  className="w-full border p-2 mb-2"
+>
+  <option value="job">Job</option>
+  <option value="admit">Admit Card</option>
+  <option value="result">Result</option>
+  <option value="answerkey">Answer Key</option>
+  <option value="syllabus">Syllabus</option>
+  <option value="admission">Admission</option>
+</select>
 
+<textarea
+  value={description}
+  onChange={(e) => setDescription(e.target.value)}
+  placeholder="Description"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={organization}
+  onChange={(e) => setOrganization(e.target.value)}
+  placeholder="Organization"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={officialWebsite}
+  onChange={(e) => setOfficialWebsite(e.target.value)}
+  placeholder="Official Website"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={qualification}
+  onChange={(e) => setQualification(e.target.value)}
+  placeholder="Qualification"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={ageLimit}
+  onChange={(e) => setAgeLimit(e.target.value)}
+  placeholder="Age Limit"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={applicationFee}
+  onChange={(e) => setApplicationFee(e.target.value)}
+  placeholder="Application Fee"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={selectionProcess}
+  onChange={(e) => setSelectionProcess(e.target.value)}
+  placeholder="Selection Process"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={startDate}
+  onChange={(e) => setStartDate(e.target.value)}
+  placeholder="Start Date"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={lastDate}
+  onChange={(e) => setLastDate(e.target.value)}
+  placeholder="Last Date"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={examDate}
+  onChange={(e) => setExamDate(e.target.value)}
+  placeholder="Exam Date"
+  className="w-full border p-2 mb-2"
+/>
         <button onClick={saveNotice} className="bg-blue-600 text-white px-4 py-2 rounded">
           Save
         </button>
