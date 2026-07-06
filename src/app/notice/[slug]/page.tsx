@@ -10,15 +10,13 @@ export default async function NoticePage({
 }) {
   const { slug } = await params;
 
-  console.log("SLUG:", slug);
+
 
   const { data: notice, error } = await supabase
     .from("notices")
     .select("*")
-    .eq("id",9)
+    .eq("slug", slug)
     .maybeSingle();
-console.log("NOTICE DATA:", notice);
-console.log("NOTICE ERROR:", error);
   if (error) {
     return <h1>Database Error: {error.message}</h1>;
   }
