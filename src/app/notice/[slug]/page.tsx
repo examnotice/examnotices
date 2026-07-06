@@ -1,27 +1,36 @@
+
 export const dynamic = "force-dynamic";
+
 import Link from "next/link";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
+import { supabase } from "@/lib/supabase";
 export default async function NoticePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
+
+  console.log("SLUG:", slug);
 
   const { data: notice, error } = await supabase
-  .from("notices")
-  .select("*")
-  .eq("slug", slug)
-  .single();
+    .from("notices")
+    .select("*")
+    .eq("id",9)
+    .maybeSingle();
+console.log("NOTICE DATA:", notice);
+console.log("NOTICE ERROR:", error);
+  if (error) {
+    return <h1>Database Error: {error.message}</h1>;
+  }
 
-if (error || !notice) {
-  return <h1>Notice Not Found</h1>;
+ if (!notice) {
+  return (
+    <div style={{ padding: "20px" }}>
+      <h1>Notice Not Found</h1>
+      <p>Slug: {slug}</p>
+      <p>Supabase URL: {process.env.NEXT_PUBLIC_SUPABASE_URL}</p>
+    </div>
+  );
 }
 
   return (
