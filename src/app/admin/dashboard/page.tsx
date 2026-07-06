@@ -9,7 +9,11 @@ export default function Dashboard() {
   const [description, setDescription] = useState("");
   const [organization, setOrganization] = useState("");
   const [officialWebsite, setOfficialWebsite] = useState("");
-
+  const [applyLink, setApplyLink] = useState("");
+const [notificationLink, setNotificationLink] = useState("");
+const [syllabusLink, setSyllabusLink] = useState("");
+const [admitCardLink, setAdmitCardLink] = useState("");
+const [resultLink, setResultLink] = useState("");
   const [qualification, setQualification] = useState("");
   const [ageLimit, setAgeLimit] = useState("");
   const [applicationFee, setApplicationFee] = useState("");
@@ -52,6 +56,11 @@ export default function Dashboard() {
         startDate,
         lastDate,
         examDate,
+        applyLink,
+        notificationLink,
+        syllabusLink,
+        admitCardLink,
+        resultLink,
       },
     ]);
 
@@ -124,9 +133,48 @@ export default function Dashboard() {
 />
 
 <input
+  value={applyLink}
+  onChange={(e) => setApplyLink(e.target.value)}
+  placeholder="Apply Link"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={notificationLink}
+  onChange={(e) => setNotificationLink(e.target.value)}
+  placeholder="Notification Link"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={syllabusLink}
+  onChange={(e) => setSyllabusLink(e.target.value)}
+  placeholder="Syllabus Link"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={admitCardLink}
+  onChange={(e) => setAdmitCardLink(e.target.value)}
+  placeholder="Admit Card Link"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={resultLink}
+  onChange={(e) => setResultLink(e.target.value)}
+  placeholder="Result Link"
+  className="w-full border p-2 mb-2"
+/>
+
+<textarea
   value={qualification}
   onChange={(e) => setQualification(e.target.value)}
-  placeholder="Qualification"
+  placeholder={`10th Pass
+12th Pass
+ITI
+Diploma
+Graduate`}
   className="w-full border p-2 mb-2"
 />
 
@@ -137,10 +185,14 @@ export default function Dashboard() {
   className="w-full border p-2 mb-2"
 />
 
-<input
+<textarea
   value={applicationFee}
   onChange={(e) => setApplicationFee(e.target.value)}
-  placeholder="Application Fee"
+  placeholder={`General:100
+OBC/EWS:100
+SC/ST:0
+PH:0
+Female:0`}
   className="w-full border p-2 mb-2"
 />
 
@@ -174,22 +226,6 @@ export default function Dashboard() {
         <button onClick={saveNotice} className="bg-blue-600 text-white px-4 py-2 rounded">
           Save
         </button>
-
-        <hr className="my-5" />
-
-        <h2 className="font-bold mb-3">Notices</h2>
-
-        {dbNotices.map((item) => (
-          <div key={item.id} className="border p-2 mb-2">
-            <p>{item.title}</p>
-            <button
-              onClick={() => deleteNotice(item.id)}
-              className="bg-red-600 text-white px-2 py-1 mt-2"
-            >
-              Delete
-            </button>
-          </div>
-        ))}
       </div>
     </main>
   );
