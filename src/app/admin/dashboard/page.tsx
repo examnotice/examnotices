@@ -568,9 +568,40 @@ className="bg-green-600 text-white px-4 py-2 rounded mb-4"
   + Add Post Detail
 </button>
 
-        <button onClick={saveNotice} className="bg-blue-600 text-white px-4 py-2 rounded">
+        <button onClick={saveNotice}className="bg-blue-600 text-white px-4 py-2 rounded">
           Save
         </button>
+
+<h2 className="text-2xl font-bold mt-8 mb-4">
+Saved Notices
+</h2>
+
+{dbNotices.map((notice) => (
+  <div
+    key={notice.id}
+    className="bg-white border p-4 rounded mb-3"
+  >
+    <h3 className="font-bold">
+      {notice.title}
+    </h3>
+
+    <p>
+      {notice.category}
+    </p>
+
+    <button
+      onClick={() => {
+        if (confirm("Delete this notice?")) {
+          deleteNotice(notice.id);
+        }
+      }}
+      className="bg-red-600 text-white px-3 py-2 rounded mt-2"
+    >
+      Delete
+    </button>
+  </div>
+))}
+
       </div>
     </main>
   );
