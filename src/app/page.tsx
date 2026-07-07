@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { notices } from "../data/notices";
 import ScrollTop from "./components/ScrollTop";
@@ -91,9 +92,18 @@ const admissions = dbNotices.filter(
       id="navbar"
       className="shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">
-            Exam Notice
-          </h1>
+         <div className="flex items-center gap-3">
+  <Image
+    src="/examnotice.png"
+    alt="Exam Notice"
+    width={100}
+    height={100}
+  />
+
+  <h1 className="text-4xl font-bold">
+    EXAM NOTICE
+  </h1>
+</div>
 
           <div className="flex gap-4 items-center">
             <button className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700">
@@ -143,17 +153,14 @@ const admissions = dbNotices.filter(
             Fast Updates For SSC, Railway, UPSC, JSSC & More
           </p>
 
-          <input
-            type="text"
-            placeholder="Search notices..."
-            className="w-full max-w-2xl p-4 rounded-xl text-black"
-          />
+         <input
+  type="text"
+  placeholder="Search Jobs, Admit Card, Results..."
+  className="w-full max-w-xl p-3 rounded-xl border-2 border-blue-500 bg-white text-black shadow-lg mx-auto"
+/>
 
         </div>
       </section>
-      <p className="text-center py-4">
-  Total DB Notices: {dbNotices.length}
-</p>
 
       {/* Moving Cards */}
 <div className="overflow-hidden py-6 bg-yellow-100">

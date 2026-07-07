@@ -56,11 +56,11 @@ const [resultLink, setResultLink] = useState("");
         startDate,
         lastDate,
         examDate,
-        applyLink,
-        notificationLink,
-        syllabusLink,
-        admitCardLink,
-        resultLink,
+       applylink: applyLink,
+notificationlink: notificationLink,
+syllabuslink: syllabusLink,
+admitcardlink: admitCardLink,
+resultlink: resultLink,
       },
     ]);
 

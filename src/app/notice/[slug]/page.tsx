@@ -75,140 +75,54 @@ export default async function NoticePage({
 </div>
 
         {/* Important Dates */}
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
+       <div className="border rounded-xl p-5 mb-6">
+  <h2 className="text-xl font-bold mb-4">
+    Important Dates
+  </h2>
 
-          <div className="bg-green-600 text-white p-5 rounded-xl text-center">
-            <p className="text-sm">Application Start</p>
-            <p className="font-bold mt-2">
-              {notice.startDate}
-            </p>
-          </div>
+  <div className="space-y-3">
 
-          <div className="bg-red-600 text-white p-5 rounded-xl text-center">
-            <p className="text-sm">Last Date</p>
-            <p className="font-bold mt-2">
-              {notice.lastDate}
-            </p>
-          </div>
+    <div className="bg-green-100 border-l-4 border-green-600 p-4 rounded">
+      <p className="font-semibold">
+        Application Start
+      </p>
+      <p>{notice.startDate}</p>
+    </div>
 
-          <div className="bg-blue-600 text-white p-5 rounded-xl text-center">
-            <p className="text-sm">Exam Date</p>
-            <p className="font-bold mt-2">
-              {notice.examDate}
-            </p>
-          </div>
+    <div className="bg-red-100 border-l-4 border-red-600 p-4 rounded">
+      <p className="font-semibold">
+        Last Date
+      </p>
+      <p>{notice.lastDate}</p>
+    </div>
 
-        </div>
-        <div className="overflow-x-auto mb-8">
-  <table className="w-full border">
+    <div className="bg-blue-100 border-l-4 border-blue-600 p-4 rounded">
+      <p className="font-semibold">
+        Exam Date
+      </p>
+      <p>{notice.examDate}</p>
+    </div>
 
-    <thead>
-      <tr className="bg-slate-200">
-        <th className="p-3 border">Event</th>
-        <th className="p-3 border">Date</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td className="p-3 border">Application Start</td>
-        <td className="p-3 border">{notice.startDate}</td>
-      </tr>
-
-      <tr>
-        <td className="p-3 border">Last Date</td>
-        <td className="p-3 border">{notice.lastDate}</td>
-      </tr>
-
-      <tr>
-        <td className="p-3 border">Exam Date</td>
-        <td className="p-3 border">{notice.examDate}</td>
-      </tr>
-    </tbody>
-
-  </table>
+  </div>
 </div>
 
-        {/* Important Information */}
-        <div className="overflow-x-auto mb-6">
-  <table className="w-full border border-gray-300">
+<div className="border rounded-xl p-5 mb-6">
+  <h2 className="text-xl font-bold mb-4">
+    Qualification Details
+  </h2>
 
-    <tbody>
-
-      <tr className="border-b">
-        <td className="p-3 font-bold">Organization</td>
-        <td className="p-3">{notice.organization}</td>
-      </tr>
-
-      <tr className="border-b">
-        <td className="p-3 font-bold">Qualification</td>
-        <td className="p-3">{notice.qualification}</td>
-      </tr>
-
-      <tr className="border-b">
-        <td className="p-3 font-bold">Age Limit</td>
-        <td className="p-3">{notice.ageLimit}</td>
-      </tr>
-
-      <tr className="border-b">
-        <td className="p-3 font-bold">Application Fee</td>
-        <td className="p-3">{notice.applicationFee}</td>
-      </tr>
-
-      <tr className="border-b">
-        <td className="p-3 font-bold">Selection Process</td>
-        <td className="p-3">{notice.selectionProcess}</td>
-      </tr>
-
-    </tbody>
-
-  </table>
+  <div className="bg-slate-100 p-4 rounded-lg whitespace-pre-line">
+    {notice.qualification || "Not Mentioned"}
+  </div>
 </div>
-       <table className="w-full border border-collapse">
-  <tbody>
-    <tr className="border">
-      <td className="p-3 font-bold bg-slate-100">Post Name</td>
-      <td className="p-3">{notice.title}</td>
-    </tr>
 
-    <tr className="border">
-      <td className="p-3 font-bold bg-slate-100">Application Start</td>
-      <td className="p-3">{notice.startDate}</td>
-    </tr>
-
-    <tr className="border">
-      <td className="p-3 font-bold bg-slate-100">Last Date</td>
-      <td className="p-3">{notice.lastDate}</td>
-    </tr>
-
-    <tr className="border">
-      <td className="p-3 font-bold bg-slate-100">Exam Date</td>
-      <td className="p-3">{notice.examDate}</td>
-    </tr>
-
-    <tr className="border">
-      <td className="p-3 font-bold bg-slate-100">Qualification</td>
-      <td className="p-3">
-        {notice.eligibility || "Graduate"}
-      </td>
-    </tr>
-
-    <tr className="border">
-      <td className="p-3 font-bold bg-slate-100">Age Limit</td>
-      <td className="p-3">
-        {notice.age || "18-32 Years"}
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-        {/* Important Links */}
+{/* Important Links */}
         <div className="border rounded-xl p-5 mb-6">
           <h2 className="text-xl font-bold mb-4">
             Important Links
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-3">
 
             <a
               href="#"
