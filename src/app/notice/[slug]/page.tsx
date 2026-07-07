@@ -20,6 +20,10 @@ export default async function NoticePage({
   if (error) {
     return <h1>Database Error: {error.message}</h1>;
   }
+const { data: vacancyRows } = await supabase
+  .from("vacancy_rows")
+  .select("*")
+  .eq("notice_id", notice.id);
 
  if (!notice) {
   return (
@@ -75,6 +79,128 @@ export default async function NoticePage({
 </div>
 
         {/* Important Dates */}
+        {notice.vacancyrows?.length > 0 && (
+  <div className="border rounded-xl p-5 mb-6">
+    <h2 className="text-xl font-bold mb-4">
+      Vacancy Details
+    </h2>
+{notice.postdetails?.length > 0 && (
+  <div className="border rounded-xl p-5 mb-6">
+
+    <h2 className="text-xl font-bold mb-4">
+      Post Details
+    </h2>
+
+    <div className="overflow-x-auto">
+      <table className="w-full border border-collapse">
+
+        <thead>
+          <tr className="bg-slate-200">
+            <th className="border p-2">Post Name</th>
+            <th className="border p-2">Total Post</th>
+            <th className="border p-2">Eligibility</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {notice.postdetails.map((row: any, i: number) => (
+            <tr key={i}>
+              <td className="border p-2">{row.post_name}</td>
+              <td className="border p-2">{row.total_post}</td>
+              <td className="border p-2 whitespace-pre-line">
+                {row.eligibility}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+)}
+    <div className="overflow-x-auto">
+      <table className="w-full border border-collapse">
+        <thead>
+          <tr className="bg-slate-200">
+            <th className="border p-2">Post Name</th>
+            <th className="border p-2">Gen</th>
+            <th className="border p-2">EWS</th>
+            <th className="border p-2">OBC</th>
+            <th className="border p-2">SC</th>
+            <th className="border p-2">ST</th>
+            <th className="border p-2">Total</th>
+            <th className="border p-2">Eligibility</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {notice.vacancyrows.map((row: any, i: number) => (
+            <tr key={i}>
+              <td className="border p-2">{row.post_name}</td>
+              <td className="border p-2">{row.general}</td>
+              <td className="border p-2">{row.ews}</td>
+              <td className="border p-2">{row.obc}</td>
+              <td className="border p-2">{row.sc}</td>
+              <td className="border p-2">{row.st}</td>
+              <td className="border p-2">{row.total}</td>
+              <td className="border p-2 whitespace-pre-line">
+                {row.eligibility}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+)}
+       {vacancyRows && vacancyRows.length > 0 && (
+  <div className="border rounded-xl p-5 mb-6">
+
+    <h2 className="text-2xl font-bold text-center mb-4">
+      Vacancy Details
+    </h2>
+
+    <div className="overflow-x-auto">
+
+      <table className="w-full border border-collapse">
+
+        <thead>
+          <tr className="bg-slate-200">
+            <th className="border p-3">Post Name</th>
+            <th className="border p-3">Total Post</th>
+            <th className="border p-3">Eligibility</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          {vacancyRows.map((row) => (
+            <tr key={row.id}>
+
+              <td className="border p-3">
+                {row.post_name}
+              </td>
+
+              <td className="border p-3 text-center">
+                {row.total_post}
+              </td>
+
+              <td className="border p-3 whitespace-pre-line">
+                {row.eligibility}
+              </td>
+
+            </tr>
+          ))}
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+)}
        <div className="border rounded-xl p-5 mb-6">
   <h2 className="text-xl font-bold mb-4">
     Important Dates

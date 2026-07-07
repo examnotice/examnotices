@@ -21,8 +21,29 @@ const [resultLink, setResultLink] = useState("");
   const [startDate, setStartDate] = useState("");
   const [lastDate, setLastDate] = useState("");
   const [examDate, setExamDate] = useState("");
-
+const [totalPost, setTotalPost] = useState("");
+const [vacancyDetails, setVacancyDetails] = useState("");
   const [dbNotices, setDbNotices] = useState<any[]>([]);
+  const [vacancyRows, setVacancyRows] = useState([
+  {
+    post_name: "",
+    general: "",
+    ews: "",
+    obc: "",
+    sc: "",
+    st: "",
+    total: "",
+    eligibility: "",
+  },
+]);
+
+const [postDetails, setPostDetails] = useState([
+  {
+    post_name: "",
+    total_post: "",
+    eligibility: "",
+  },
+]);
 
   async function loadNotices() {
     const { data, error } = await supabase
@@ -56,11 +77,16 @@ const [resultLink, setResultLink] = useState("");
         startDate,
         lastDate,
         examDate,
+        totalpost: totalPost,
        applylink: applyLink,
 notificationlink: notificationLink,
 syllabuslink: syllabusLink,
 admitcardlink: admitCardLink,
 resultlink: resultLink,
+
+vacancydetails: vacancyDetails,
+vacancyrows: vacancyRows,
+postdetails: postDetails,
       },
     ]);
 
@@ -70,6 +96,19 @@ resultlink: resultLink,
     }
 
     alert("Saved!");
+
+    setVacancyRows([
+  {
+    post_name: "",
+    general: "",
+    ews: "",
+    obc: "",
+    sc: "",
+    st: "",
+    total: "",
+    eligibility: "",
+  },
+]);
 
     setTitle("");
     setCategory("job");
@@ -167,6 +206,20 @@ resultlink: resultLink,
   className="w-full border p-2 mb-2"
 />
 
+<input
+  value={totalPost}
+  onChange={(e) => setTotalPost(e.target.value)}
+  placeholder="Total Posts"
+  className="w-full border p-2 mb-2"
+/>
+
+<textarea
+  value={vacancyDetails}
+  onChange={(e) => setVacancyDetails(e.target.value)}
+  placeholder="Vacancy Details"
+  className="w-full border p-2 mb-2"
+/>
+
 <textarea
   value={qualification}
   onChange={(e) => setQualification(e.target.value)}
@@ -223,6 +276,185 @@ Female:0`}
   placeholder="Exam Date"
   className="w-full border p-2 mb-2"
 />
+
+<h2 className="text-xl font-bold mt-4 mb-2">
+  Vacancy Rows
+</h2>
+
+{vacancyRows.map((row, index) => (
+  <div key={index} className="border p-3 mb-3 rounded">
+
+    <input
+      placeholder="Post Name"
+      value={row.post_name}
+      onChange={(e) => {
+        const updated = [...vacancyRows];
+        updated[index].post_name = e.target.value;
+        setVacancyRows(updated);
+      }}
+      className="w-full border p-2 mb-2"
+    />
+
+    <input
+      placeholder="General"
+      value={row.general}
+      onChange={(e) => {
+        const updated = [...vacancyRows];
+        updated[index].general = e.target.value;
+        setVacancyRows(updated);
+      }}
+      className="w-full border p-2 mb-2"
+    />
+
+    <input
+      placeholder="EWS"
+      value={row.ews}
+      onChange={(e) => {
+        const updated = [...vacancyRows];
+        updated[index].ews = e.target.value;
+        setVacancyRows(updated);
+      }}
+      className="w-full border p-2 mb-2"
+    />
+
+    <input
+      placeholder="OBC"
+      value={row.obc}
+      onChange={(e) => {
+        const updated = [...vacancyRows];
+        updated[index].obc = e.target.value;
+        setVacancyRows(updated);
+      }}
+      className="w-full border p-2 mb-2"
+    />
+
+    <input
+      placeholder="SC"
+      value={row.sc}
+      onChange={(e) => {
+        const updated = [...vacancyRows];
+        updated[index].sc = e.target.value;
+        setVacancyRows(updated);
+      }}
+      className="w-full border p-2 mb-2"
+    />
+
+    <input
+      placeholder="ST"
+      value={row.st}
+      onChange={(e) => {
+        const updated = [...vacancyRows];
+        updated[index].st = e.target.value;
+        setVacancyRows(updated);
+      }}
+      className="w-full border p-2 mb-2"
+    />
+
+    <input
+      placeholder="Total"
+      value={row.total}
+      onChange={(e) => {
+        const updated = [...vacancyRows];
+        updated[index].total = e.target.value;
+        setVacancyRows(updated);
+      }}
+      className="w-full border p-2 mb-2"
+    />
+
+    <textarea
+      placeholder="Eligibility"
+      value={row.eligibility}
+      onChange={(e) => {
+        const updated = [...vacancyRows];
+        updated[index].eligibility = e.target.value;
+        setVacancyRows(updated);
+      }}
+      className="w-full border p-2"
+    />
+  </div>
+))}
+
+<button
+  type="button"
+  onClick={() =>
+    setVacancyRows([
+      ...vacancyRows,
+      {
+        post_name: "",
+        general: "",
+        ews: "",
+        obc: "",
+        sc: "",
+        st: "",
+        total: "",
+        eligibility: "",
+      },
+    ])
+  }
+  className="bg-green-600 text-white px-4 py-2 rounded mb-4"
+>
+  + Add Vacancy Row
+</button>
+
+<h2 className="text-xl font-bold mt-6 mb-2">
+  Post Details
+</h2>
+
+{postDetails.map((row, index) => (
+  <div key={index} className="border p-3 mb-3 rounded">
+
+    <input
+      placeholder="Post Name"
+      value={row.post_name}
+      onChange={(e) => {
+        const updated = [...postDetails];
+        updated[index].post_name = e.target.value;
+        setPostDetails(updated);
+      }}
+      className="w-full border p-2 mb-2"
+    />
+
+    <input
+      placeholder="Total Post"
+      value={row.total_post}
+      onChange={(e) => {
+        const updated = [...postDetails];
+        updated[index].total_post = e.target.value;
+        setPostDetails(updated);
+      }}
+      className="w-full border p-2 mb-2"
+    />
+
+    <textarea
+      placeholder="Eligibility"
+      value={row.eligibility}
+      onChange={(e) => {
+        const updated = [...postDetails];
+        updated[index].eligibility = e.target.value;
+        setPostDetails(updated);
+      }}
+      className="w-full border p-2"
+    />
+  </div>
+))}
+
+<button
+  type="button"
+  onClick={() =>
+    setPostDetails([
+      ...postDetails,
+      {
+        post_name: "",
+        total_post: "",
+        eligibility: "",
+      },
+    ])
+  }
+  className="bg-purple-600 text-white px-4 py-2 rounded mb-4"
+>
+  + Add Post Detail
+</button>
+
         <button onClick={saveNotice} className="bg-blue-600 text-white px-4 py-2 rounded">
           Save
         </button>
