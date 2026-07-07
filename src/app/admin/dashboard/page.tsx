@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 
 export default function Dashboard() {
+  const [showPostDetails, setShowPostDetails] = useState(true);
+const [showVacancyDetails, setShowVacancyDetails] = useState(true);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("job");
   const [description, setDescription] = useState("");
@@ -22,7 +24,21 @@ const [resultLink, setResultLink] = useState("");
   const [lastDate, setLastDate] = useState("");
   const [examDate, setExamDate] = useState("");
 const [totalPost, setTotalPost] = useState("");
+const [eligibility, setEligibility] = useState("");
+const [age, setAge] = useState("");
+const [generalFee, setGeneralFee] = useState("");
+const [scstFee, setScstFee] = useState("");
 const [vacancyDetails, setVacancyDetails] = useState("");
+const [minimumAge, setMinimumAge] = useState("");
+const [maximumAge, setMaximumAge] = useState("");
+const [ageRelaxation, setAgeRelaxation] = useState("");
+const [feeGeneral, setFeeGeneral] = useState("");
+const [feeEws, setFeeEws] = useState("");
+const [feeObc, setFeeObc] = useState("");
+const [feeSc, setFeeSc] = useState("");
+const [feeSt, setFeeSt] = useState("");
+const [feeFemale, setFeeFemale] = useState("");
+const [feePh, setFeePh] = useState("");
   const [dbNotices, setDbNotices] = useState<any[]>([]);
   const [vacancyRows, setVacancyRows] = useState([
   {
@@ -34,6 +50,13 @@ const [vacancyDetails, setVacancyDetails] = useState("");
     st: "",
     total: "",
     eligibility: "",
+  },
+]);
+
+const [importantDates, setImportantDates] = useState([
+  {
+    event: "",
+    date: "",
   },
 ]);
 
@@ -69,24 +92,29 @@ const [postDetails, setPostDetails] = useState([
         category,
         description,
         organization,
-        qualification,
-        ageLimit,
-        applicationFee,
-        selectionProcess,
+        showpostdetails: showPostDetails,
+showvacancydetails: showVacancyDetails,
+        minimumage: minimumAge,
+maximumage: maximumAge,
+agerelaxation: ageRelaxation,
         officialWebsite,
-        startDate,
-        lastDate,
-        examDate,
         totalpost: totalPost,
        applylink: applyLink,
 notificationlink: notificationLink,
 syllabuslink: syllabusLink,
 admitcardlink: admitCardLink,
 resultlink: resultLink,
-
+importantdates: importantDates,
 vacancydetails: vacancyDetails,
 vacancyrows: vacancyRows,
 postdetails: postDetails,
+feegeneral: feeGeneral,
+feeews: feeEws,
+feeobc: feeObc,
+feesc: feeSc,
+feest: feeSt,
+feefemale: feeFemale,
+feeph: feePh,
       },
     ]);
 
@@ -150,6 +178,8 @@ postdetails: postDetails,
   <option value="admission">Admission</option>
 </select>
 
+
+
 <textarea
   value={description}
   onChange={(e) => setDescription(e.target.value)}
@@ -161,6 +191,31 @@ postdetails: postDetails,
   value={organization}
   onChange={(e) => setOrganization(e.target.value)}
   placeholder="Organization"
+  className="w-full border p-2 mb-2"
+/>
+
+<h2 className="text-xl font-bold mt-4 mb-2">
+Age Details
+</h2>
+
+<input
+  placeholder="Minimum Age"
+  value={minimumAge}
+  onChange={(e)=>setMinimumAge(e.target.value)}
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  placeholder="Maximum Age"
+  value={maximumAge}
+  onChange={(e)=>setMaximumAge(e.target.value)}
+  className="w-full border p-2 mb-2"
+/>
+
+<textarea
+  placeholder="Age Relaxation"
+  value={ageRelaxation}
+  onChange={(e)=>setAgeRelaxation(e.target.value)}
   className="w-full border p-2 mb-2"
 />
 
@@ -220,64 +275,113 @@ postdetails: postDetails,
   className="w-full border p-2 mb-2"
 />
 
-<textarea
-  value={qualification}
-  onChange={(e) => setQualification(e.target.value)}
-  placeholder={`10th Pass
-12th Pass
-ITI
-Diploma
-Graduate`}
+<input
+  value={feeGeneral}
+  onChange={(e) => setFeeGeneral(e.target.value)}
+  placeholder="General Fee"
   className="w-full border p-2 mb-2"
 />
 
 <input
-  value={ageLimit}
-  onChange={(e) => setAgeLimit(e.target.value)}
-  placeholder="Age Limit"
-  className="w-full border p-2 mb-2"
-/>
-
-<textarea
-  value={applicationFee}
-  onChange={(e) => setApplicationFee(e.target.value)}
-  placeholder={`General:100
-OBC/EWS:100
-SC/ST:0
-PH:0
-Female:0`}
+  value={feeEws}
+  onChange={(e) => setFeeEws(e.target.value)}
+  placeholder="EWS Fee"
   className="w-full border p-2 mb-2"
 />
 
 <input
-  value={selectionProcess}
-  onChange={(e) => setSelectionProcess(e.target.value)}
-  placeholder="Selection Process"
+  value={feeObc}
+  onChange={(e) => setFeeObc(e.target.value)}
+  placeholder="OBC Fee"
   className="w-full border p-2 mb-2"
 />
 
 <input
-  value={startDate}
-  onChange={(e) => setStartDate(e.target.value)}
-  placeholder="Start Date"
+  value={feeSc}
+  onChange={(e) => setFeeSc(e.target.value)}
+  placeholder="SC Fee"
   className="w-full border p-2 mb-2"
 />
 
 <input
-  value={lastDate}
-  onChange={(e) => setLastDate(e.target.value)}
-  placeholder="Last Date"
+  value={feeSt}
+  onChange={(e) => setFeeSt(e.target.value)}
+  placeholder="ST Fee"
   className="w-full border p-2 mb-2"
 />
 
 <input
-  value={examDate}
-  onChange={(e) => setExamDate(e.target.value)}
-  placeholder="Exam Date"
+  value={feeFemale}
+  onChange={(e) => setFeeFemale(e.target.value)}
+  placeholder="Female Fee"
+  className="w-full border p-2 mb-2"
+/>
+
+<input
+  value={feePh}
+  onChange={(e) => setFeePh(e.target.value)}
+  placeholder="PH Fee"
   className="w-full border p-2 mb-2"
 />
 
 <h2 className="text-xl font-bold mt-4 mb-2">
+Important Dates
+</h2>
+
+{importantDates.map((row, index) => (
+  <div key={index} className="border p-3 mb-2 rounded">
+
+    <input
+      placeholder="Event Name"
+      value={row.event}
+      onChange={(e) => {
+        const updated = [...importantDates];
+        updated[index].event = e.target.value;
+        setImportantDates(updated);
+      }}
+      className="w-full border p-2 mb-2"
+    />
+
+    <input
+      placeholder="Date"
+      value={row.date}
+      onChange={(e) => {
+        const updated = [...importantDates];
+        updated[index].date = e.target.value;
+        setImportantDates(updated);
+      }}
+      className="w-full border p-2"
+    />
+
+  </div>
+))}
+<button
+type="button"
+onClick={() =>
+setImportantDates([
+...importantDates,
+{
+event: "",
+date: "",
+},
+])
+}
+className="bg-green-600 text-white px-4 py-2 rounded mb-4"
+>
++ Add Date
+</button>
+
+<h2 className="text-xl font-bold mt-4 mb-2">
+
+<label className="flex items-center gap-2 mb-3">
+  <input
+    type="checkbox"
+    checked={showVacancyDetails}
+    onChange={(e) => setShowVacancyDetails(e.target.checked)}
+  />
+  Show Vacancy Details
+</label>
+
   Vacancy Rows
 </h2>
 
@@ -397,6 +501,15 @@ Female:0`}
 </button>
 
 <h2 className="text-xl font-bold mt-6 mb-2">
+<label className="flex items-center gap-2 mb-3">
+  <input
+    type="checkbox"
+    checked={showPostDetails}
+    onChange={(e) => setShowPostDetails(e.target.checked)}
+  />
+  Show Post Details
+</label>
+
   Post Details
 </h2>
 

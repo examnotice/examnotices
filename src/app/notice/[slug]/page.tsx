@@ -47,200 +47,211 @@ const { data: vacancyRows } = await supabase
   {notice.description}
 </p>
 
-        {/* Eligibility Details */}
+ {/* Important Dates */}
+ {notice.importantdates?.length > 0 && (
 <div className="border rounded-xl p-5 mb-6">
-  <h2 className="text-xl font-bold mb-4">
-    Eligibility Details
-  </h2>
 
-  <div className="grid md:grid-cols-2 gap-4">
+<h2 className="text-xl font-bold mb-4">
+Important Dates
+</h2>
 
-    <div className="bg-slate-100 p-4 rounded-lg">
-      <p className="font-semibold">Eligibility</p>
-      <p>{notice.eligibility || "Graduate"}</p>
-    </div>
+<div className="space-y-3">
 
-    <div className="bg-slate-100 p-4 rounded-lg">
-      <p className="font-semibold">Age Limit</p>
-      <p>{notice.age || "18-32 Years"}</p>
-    </div>
+{notice.importantdates.map((item:any,index:number)=>(
+<div
+key={index}
+className="bg-blue-100 border-l-4 border-blue-600 p-4 rounded"
+>
+<p className="font-semibold">
+{item.event}
+</p>
 
-    <div className="bg-slate-100 p-4 rounded-lg">
-      <p className="font-semibold">General Fee</p>
-      <p>{notice.fee?.general || "₹100"}</p>
-    </div>
+<p>
+{item.date}
+</p>
 
-    <div className="bg-slate-100 p-4 rounded-lg">
-      <p className="font-semibold">SC/ST Fee</p>
-      <p>{notice.fee?.scst || "₹0"}</p>
-    </div>
+</div>
+))}
 
-  </div>
+</div>
+</div>
+)}
+
+{/* Eligibility Details */}
+<div className="border rounded-xl p-5 mb-6">
+
+<h2 className="text-xl font-bold mb-4">
+Eligibility Details
+</h2>
+
+<div className="grid md:grid-cols-3 gap-4">
+
+<div className="bg-slate-100 p-4 rounded-lg">
+<p className="font-semibold">Minimum Age</p>
+<p>{notice.minimumage}</p>
 </div>
 
-        {/* Important Dates */}
-        {notice.vacancyrows?.length > 0 && (
-  <div className="border rounded-xl p-5 mb-6">
-    <h2 className="text-xl font-bold mb-4">
-      Vacancy Details
-    </h2>
-{notice.postdetails?.length > 0 && (
-  <div className="border rounded-xl p-5 mb-6">
+<div className="bg-slate-100 p-4 rounded-lg">
+<p className="font-semibold">Maximum Age</p>
+<p>{notice.maximumage}</p>
+</div>
 
-    <h2 className="text-xl font-bold mb-4">
-      Post Details
-    </h2>
+<div className="bg-slate-100 p-4 rounded-lg">
+<p className="font-semibold">Age Relaxation</p>
+<p>{notice.agerelaxation}</p>
+</div>
 
-    <div className="overflow-x-auto">
-      <table className="w-full border border-collapse">
+</div>
 
-        <thead>
-          <tr className="bg-slate-200">
-            <th className="border p-2">Post Name</th>
-            <th className="border p-2">Total Post</th>
-            <th className="border p-2">Eligibility</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {notice.postdetails.map((row: any, i: number) => (
-            <tr key={i}>
-              <td className="border p-2">{row.post_name}</td>
-              <td className="border p-2">{row.total_post}</td>
-              <td className="border p-2 whitespace-pre-line">
-                {row.eligibility}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-
-      </table>
-    </div>
-
-  </div>
-)}
-    <div className="overflow-x-auto">
-      <table className="w-full border border-collapse">
-        <thead>
-          <tr className="bg-slate-200">
-            <th className="border p-2">Post Name</th>
-            <th className="border p-2">Gen</th>
-            <th className="border p-2">EWS</th>
-            <th className="border p-2">OBC</th>
-            <th className="border p-2">SC</th>
-            <th className="border p-2">ST</th>
-            <th className="border p-2">Total</th>
-            <th className="border p-2">Eligibility</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {notice.vacancyrows.map((row: any, i: number) => (
-            <tr key={i}>
-              <td className="border p-2">{row.post_name}</td>
-              <td className="border p-2">{row.general}</td>
-              <td className="border p-2">{row.ews}</td>
-              <td className="border p-2">{row.obc}</td>
-              <td className="border p-2">{row.sc}</td>
-              <td className="border p-2">{row.st}</td>
-              <td className="border p-2">{row.total}</td>
-              <td className="border p-2 whitespace-pre-line">
-                {row.eligibility}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </div>
-)}
-       {vacancyRows && vacancyRows.length > 0 && (
-  <div className="border rounded-xl p-5 mb-6">
-
-    <h2 className="text-2xl font-bold text-center mb-4">
-      Vacancy Details
-    </h2>
-
-    <div className="overflow-x-auto">
-
-      <table className="w-full border border-collapse">
-
-        <thead>
-          <tr className="bg-slate-200">
-            <th className="border p-3">Post Name</th>
-            <th className="border p-3">Total Post</th>
-            <th className="border p-3">Eligibility</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          {vacancyRows.map((row) => (
-            <tr key={row.id}>
-
-              <td className="border p-3">
-                {row.post_name}
-              </td>
-
-              <td className="border p-3 text-center">
-                {row.total_post}
-              </td>
-
-              <td className="border p-3 whitespace-pre-line">
-                {row.eligibility}
-              </td>
-
-            </tr>
-          ))}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-)}
-       <div className="border rounded-xl p-5 mb-6">
-  <h2 className="text-xl font-bold mb-4">
-    Important Dates
-  </h2>
-
-  <div className="space-y-3">
-
-    <div className="bg-green-100 border-l-4 border-green-600 p-4 rounded">
-      <p className="font-semibold">
-        Application Start
-      </p>
-      <p>{notice.startDate}</p>
-    </div>
-
-    <div className="bg-red-100 border-l-4 border-red-600 p-4 rounded">
-      <p className="font-semibold">
-        Last Date
-      </p>
-      <p>{notice.lastDate}</p>
-    </div>
-
-    <div className="bg-blue-100 border-l-4 border-blue-600 p-4 rounded">
-      <p className="font-semibold">
-        Exam Date
-      </p>
-      <p>{notice.examDate}</p>
-    </div>
-
-  </div>
 </div>
 
 <div className="border rounded-xl p-5 mb-6">
+
+<h2 className="text-xl font-bold mb-4">
+Application Fee
+</h2>
+
+<div className="grid md:grid-cols-3 gap-4">
+
+<div className="bg-slate-100 p-4 rounded-lg">
+<p className="font-semibold">General</p>
+<p>{notice.feegeneral}</p>
+</div>
+
+<div className="bg-slate-100 p-4 rounded-lg">
+<p className="font-semibold">EWS</p>
+<p>{notice.feeews}</p>
+</div>
+
+<div className="bg-slate-100 p-4 rounded-lg">
+<p className="font-semibold">OBC</p>
+<p>{notice.feeobc}</p>
+</div>
+
+<div className="bg-slate-100 p-4 rounded-lg">
+<p className="font-semibold">SC</p>
+<p>{notice.feesc}</p>
+</div>
+
+<div className="bg-slate-100 p-4 rounded-lg">
+<p className="font-semibold">ST</p>
+<p>{notice.feest}</p>
+</div>
+
+<div className="bg-slate-100 p-4 rounded-lg">
+<p className="font-semibold">Female</p>
+<p>{notice.feefemale}</p>
+</div>
+
+<div className="bg-slate-100 p-4 rounded-lg">
+<p className="font-semibold">PH</p>
+<p>{notice.feeph}</p>
+</div>
+
+</div>
+
+</div>
+{notice.showpostdetails &&
+ notice.postdetails?.length > 0 && (
+<div className="border rounded-xl p-5 mb-6">
+
   <h2 className="text-xl font-bold mb-4">
-    Qualification Details
+    Post Details
   </h2>
 
-  <div className="bg-slate-100 p-4 rounded-lg whitespace-pre-line">
-    {notice.qualification || "Not Mentioned"}
+  <div className="overflow-x-auto">
+
+    <table className="w-full border border-collapse">
+
+      <thead>
+        <tr className="bg-slate-200">
+          <th className="border p-3">Post Name</th>
+          <th className="border p-3">Total Post</th>
+          <th className="border p-3">Eligibility</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {notice.postdetails.map((row:any,index:number)=>(
+          <tr key={index}>
+
+            <td className="border p-3">
+              {row.post_name}
+            </td>
+
+            <td className="border p-3">
+              {row.total_post}
+            </td>
+
+            <td className="border p-3">
+              {row.eligibility}
+            </td>
+
+          </tr>
+        ))}
+
+      </tbody>
+
+    </table>
+
   </div>
+
 </div>
+)}
+
+{notice.showvacancydetails &&
+ notice.vacancyrows?.length > 0 && (
+<div className="border rounded-xl p-5 mb-6">
+
+  <h2 className="text-xl font-bold mb-4">
+    Vacancy Details
+  </h2>
+
+  <div className="overflow-x-auto">
+
+    <table className="w-full border border-collapse">
+
+      <thead>
+        <tr className="bg-slate-200">
+          <th className="border p-2">Post Name</th>
+          <th className="border p-2">General</th>
+          <th className="border p-2">EWS</th>
+          <th className="border p-2">OBC</th>
+          <th className="border p-2">SC</th>
+          <th className="border p-2">ST</th>
+          <th className="border p-2">Total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {notice.vacancyrows.map((row:any,index:number)=>(
+          <tr key={index}>
+            <td className="border p-2">{row.post_name}</td>
+            <td className="border p-2">{row.general}</td>
+            <td className="border p-2">{row.ews}</td>
+            <td className="border p-2">{row.obc}</td>
+            <td className="border p-2">{row.sc}</td>
+            <td className="border p-2">{row.st}</td>
+            <td className="border p-2">{row.total}</td>
+          </tr>
+        ))}
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+)}
+
+       
+
+        
+
+       
 
 {/* Important Links */}
         <div className="border rounded-xl p-5 mb-6">
