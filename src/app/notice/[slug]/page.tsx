@@ -124,35 +124,69 @@ export default async function NoticePage({
 
           <div className="flex flex-col gap-3">
 
-            <a
-              href="#"
-              className="bg-green-600 text-white text-center py-3 rounded-lg font-bold"
-            >
-              Apply Online
-            </a>
+            <div className="space-y-3">
 
-            <a
-              href="#"
-              className="bg-blue-600 text-white text-center py-3 rounded-lg font-bold"
-            >
-              Download Notification
-            </a>
-
-           <a
-  href={notice.officialWebsite || "#"}
+{notice.applylink && (
+<a
+  href={notice.applylink}
   target="_blank"
-  rel="noopener noreferrer"
-  className="bg-purple-600 text-white text-center py-3 rounded-lg font-bold"
+  className="block bg-green-600 text-white text-center py-3 rounded-lg font-bold"
+>
+  Apply Online
+</a>
+)}
+
+{notice.notificationlink && (
+<a
+  href={notice.notificationlink}
+  target="_blank"
+  className="block bg-blue-600 text-white text-center py-3 rounded-lg font-bold"
+>
+  Download Notification
+</a>
+)}
+
+{notice.admitcardlink && (
+<a
+  href={notice.admitcardlink}
+  target="_blank"
+  className="block bg-yellow-600 text-white text-center py-3 rounded-lg font-bold"
+>
+  Download Admit Card
+</a>
+)}
+
+{notice.resultlink && (
+<a
+  href={notice.resultlink}
+  target="_blank"
+  className="block bg-red-600 text-white text-center py-3 rounded-lg font-bold"
+>
+  Check Result
+</a>
+)}
+
+{notice.syllabuslink && (
+<a
+  href={notice.syllabuslink}
+  target="_blank"
+  className="block bg-orange-600 text-white text-center py-3 rounded-lg font-bold"
+>
+  Download Syllabus
+</a>
+)}
+
+{notice.officialWebsite && (
+<a
+  href={notice.officialWebsite}
+  target="_blank"
+  className="block bg-purple-600 text-white text-center py-3 rounded-lg font-bold"
 >
   Official Website
 </a>
+)}
 
-            <a
-              href="#"
-              className="bg-orange-600 text-white text-center py-3 rounded-lg font-bold"
-            >
-              Download Syllabus
-            </a>
+</div>
 
           </div>
         </div>
