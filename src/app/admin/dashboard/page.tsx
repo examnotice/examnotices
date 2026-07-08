@@ -83,7 +83,13 @@ const [postDetails, setPostDetails] = useState([
   }, []);
 
   async function saveNotice() {
-    const slug = title.toLowerCase().replaceAll(" ", "-");
+   const slug = title
+  .toLowerCase()
+  .trim()
+  .replace(/[\/\\]/g, "-")      // / aur \ ko -
+  .replace(/[^a-z0-9\s-]/g, "") // special characters hatao
+  .replace(/\s+/g, "-")         // spaces ko -
+  .replace(/-+/g, "-");         // multiple - ko single -
 
     const { error } = await supabase.from("notices").insert([
       {

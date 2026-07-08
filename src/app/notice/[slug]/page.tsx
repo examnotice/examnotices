@@ -25,6 +25,7 @@ if (!notice) {
     <div style={{ padding: "20px" }}>
       <h1>Notice Not Found</h1>
       <p>Slug: {slug}</p>
+      <p>Notice Data: {JSON.stringify(notice)}</p>
     </div>
   );
 }
