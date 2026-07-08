@@ -20,20 +20,15 @@ export default async function NoticePage({
   if (error) {
     return <h1>Database Error: {error.message}</h1>;
   }
-const { data: vacancyRows } = await supabase
-  .from("vacancy_rows")
-  .select("*")
-  .eq("notice_id", notice.id);
-
- if (!notice) {
+if (!notice) {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Notice Not Found</h1>
       <p>Slug: {slug}</p>
-      <p>Supabase URL: {process.env.NEXT_PUBLIC_SUPABASE_URL}</p>
     </div>
   );
 }
+
 
   return (
     <main className="min-h-screen bg-slate-100 p-5">
