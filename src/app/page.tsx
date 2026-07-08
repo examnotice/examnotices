@@ -70,7 +70,7 @@ const admissions = dbNotices.filter(
       Admit Card
     </a>
 
-    <a href="results" className="font-medium hover:text-blue-600">
+    <a href="#results" className="font-medium hover:text-blue-600">
       Results
     </a>
 
@@ -82,7 +82,7 @@ const admissions = dbNotices.filter(
       Syllabus
     </a>
 
-    <a href="#admission" className="font-medium hover:text-blue-600">
+    <a href="#admissions" className="font-medium hover:text-blue-600">
       Admission
     </a>
 
@@ -302,7 +302,7 @@ className="bg-white rounded-xl shadow-lg p-5">
 </div>
 
 {/* Syllabus */}
-<div id="syllbus"
+<div id="syllabus"
 className="bg-white rounded-xl shadow-lg p-5">
   <h2 className="text-xl font-bold text-orange-700 mb-4 border-b pb-2">
     Syllabus
@@ -326,7 +326,7 @@ className="bg-white rounded-xl shadow-lg p-5">
 </div>
 
 {/* Admissions */}
-<div id="admissions"
+<div id="admission"
 className="bg-white rounded-xl shadow-lg p-5">
   <h2 className="text-xl font-bold text-cyan-700 mb-4 border-b pb-2">
     Admissions
